@@ -36,6 +36,9 @@ const.f_table.g_2_3P_2.e_5_1S_0 = 1e9*const.c/406.8886971706; % Can't observe fr
 const.f_table.g_2_3P_2.e_5_1P_1 = 1e9*const.c/402.322271224483;  % Should be visible with sigma-
 const.f_table.g_2_3P_2.e_5_1D_2 = 744430343.14e6;% Spotted; should be able to get two lines
 
+% singlet-triplet to the N=4 manifold
+const.f_table.g_2_3P_2.e_4_1D_2 = 670326599.824518;
+const.f_table.g_2_3P_2.e_4_1P_1 = 671713323.876449; 
 
 %Fitted values for the 5^3D's
 const.f_table.g_2_3P_2.e_5_3D_3 = 744.39620836e12;
@@ -47,15 +50,18 @@ const.f_table.g_2_3P_2.e_5_3D_1 = 744.39651114e12;
 opt.mg_range = 2;%0:2;
 
 % Parameters
-B = linspace(0,30,50);
+B = linspace(10,20,50);
 g_level = '2_3P_2';
 g_state = '2_3P_2_2';
 
-e_term = '5_1D';
+e_level = '5_3S_1'
+e_term = '5_3S';
 e_manifold  = e_term(1:3);
 % Generate the lookup table
 lines = z_level2manifold(B,g_level,e_manifold,const);
 
+sfigure(123)
+% plot_level2level(lines,g_level,e_level,const,opt)
 plot_level2term(lines,g_level,e_term,const,opt)
 % plot_state2manifold(lines,g_state,e_manifold,const,opt)
 xlabel('Magnetic field strength (G)')
